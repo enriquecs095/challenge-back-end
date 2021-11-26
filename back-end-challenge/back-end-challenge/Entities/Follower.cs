@@ -11,6 +11,6 @@ namespace back_end_challenge.Entities
         public string UserMaster { get; set; }
         public string UserFollower { get; set; }
 
-        public virtual NewUserDto UserMasterNavigation { get; set; }
+        public virtual User UserMasterNavigation { get; set; }
     }
 }

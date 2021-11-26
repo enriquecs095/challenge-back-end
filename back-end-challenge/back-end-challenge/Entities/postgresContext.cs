@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Threading.Tasks;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata;
 
@@ -18,6 +19,12 @@ namespace back_end_challenge.Entities
         }
 
         public virtual DbSet<Follower> Followers { get; set; }
+
+        internal Task firstordefault(Func<object, object> p)
+        {
+            throw new NotImplementedException();
+        }
+
         public virtual DbSet<Following> Followings { get; set; }
         public virtual DbSet<PgBuffercache> PgBuffercaches { get; set; }
         public virtual DbSet<PgStatStatement> PgStatStatements { get; set; }

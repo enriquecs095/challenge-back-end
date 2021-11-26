@@ -1,3 +1,4 @@
+using back_end_challenge.Entities;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
@@ -11,6 +12,8 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Microsoft.EntityFrameworkCore;
+using back_end_challenge.Repositories;
 
 namespace back_end_challenge
 {
@@ -32,6 +35,8 @@ namespace back_end_challenge
             {
                 c.SwaggerDoc("v1", new OpenApiInfo { Title = "back_end_challenge", Version = "v1" });
             });
+            services.AddDbContext<postgresContext>((s, o) => o.UseNpgsql(Configuration.GetSection("ConnectionDBPostgreServer").Get<string>()));
+            services.AddScoped<ILoginRepository,LoginRepository>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

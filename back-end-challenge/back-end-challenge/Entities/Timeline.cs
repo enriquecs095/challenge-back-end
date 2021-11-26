@@ -12,6 +12,6 @@ namespace back_end_challenge.Entities
         public string Comment { get; set; }
         public string User { get; set; }
 
-        public virtual NewUserDto UserNavigation { get; set; }
+        public virtual User UserNavigation { get; set; }
     }
 }

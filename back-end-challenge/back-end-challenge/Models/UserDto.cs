@@ -5,13 +5,13 @@ using System.Collections.Generic;
 
 namespace back_end_challenge.Models
 {
-    public partial class NewUserDto
+    public partial class UserDto
     {
-        public NewUserDto()
+        public UserDto()
         {
-            Followers = new HashSet<Follower>();
-            Followings = new HashSet<Following>();
-            Timelines = new HashSet<Timeline>();
+            Followers = new HashSet<FollowerDto>();
+            Followings = new HashSet<FollowingDto>();
+            Timelines = new HashSet<TimelineDto>();
         }
 
         public string IdUser { get; set; }
@@ -23,8 +23,8 @@ namespace back_end_challenge.Models
         public string Thought { get; set; }
         public string Password { get; set; }
 
-        public virtual ICollection<Follower> Followers { get; set; }
-        public virtual ICollection<Following> Followings { get; set; }
-        public virtual ICollection<Timeline> Timelines { get; set; }
+        public virtual ICollection<FollowerDto> Followers { get; set; }
+        public virtual ICollection<FollowingDto> Followings { get; set; }
+        public virtual ICollection<TimelineDto> Timelines { get; set; }
     }
 }
