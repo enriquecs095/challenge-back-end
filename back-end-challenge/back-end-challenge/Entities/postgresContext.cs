@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Threading.Tasks;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata;
 
@@ -19,12 +18,6 @@ namespace back_end_challenge.Entities
         }
 
         public virtual DbSet<Follower> Followers { get; set; }
-
-        internal Task firstordefault(Func<object, object> p)
-        {
-            throw new NotImplementedException();
-        }
-
         public virtual DbSet<Following> Followings { get; set; }
         public virtual DbSet<PgBuffercache> PgBuffercaches { get; set; }
         public virtual DbSet<PgStatStatement> PgStatStatements { get; set; }
@@ -53,8 +46,13 @@ namespace back_end_challenge.Entities
                 entity.ToTable("followers");
 
                 entity.Property(e => e.IdFollower)
-                    .ValueGeneratedNever()
-                    .HasColumnName("id_follower");
+                    .HasColumnName("id_follower")
+                    .UseIdentityAlwaysColumn()
+                    .HasIdentityOptions(null, null, null, 999999999L, null, null);
+
+                entity.Property(e => e.CreationDate)
+                    .HasColumnType("date")
+                    .HasColumnName("Creation_date");
 
                 entity.Property(e => e.UserFollower)
                     .IsRequired()
@@ -84,6 +82,10 @@ namespace back_end_challenge.Entities
                     .HasColumnName("id_following")
                     .UseIdentityAlwaysColumn()
                     .HasIdentityOptions(null, null, null, 999999999L, null, null);
+
+                entity.Property(e => e.CreationDate)
+                    .HasColumnType("date")
+                    .HasColumnName("Creation_date");
 
                 entity.Property(e => e.UserFollowing)
                     .IsRequired()

@@ -28,6 +28,7 @@ namespace back_end_challenge.Controllers
             return (result) ? Ok(true) : Ok(false);
         }
 
+
         [HttpGet("GetFollowingList")]
 
         public async Task<ActionResult<IEnumerable<FollowingDto>>> GetFollowingList(string user) {

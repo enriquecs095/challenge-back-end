@@ -10,6 +10,7 @@ namespace back_end_challenge.Entities
         public int IdFollowing { get; set; }
         public string UserMaster { get; set; }
         public string UserFollowing { get; set; }
+        public DateTime? CreationDate { get; set; }
 
         public virtual User UserMasterNavigation { get; set; }
     }
