@@ -22,8 +22,9 @@ namespace back_end_challenge.Repositories
         public async Task<bool> AddFollowingAsync(FollowingDto following)
         {
             var result = await db.Followings.AddAsync(new Following { 
-            UserFollowing=following.UserFollowing,
-            UserMaster=following.UserMaster
+                UserFollowing=following.UserFollowing,
+                UserMaster=following.UserMaster,
+                CreationDate=following.CreationDate
             });
             await db.SaveChangesAsync();
             return (result != null) ? true : false;
@@ -37,10 +38,12 @@ namespace back_end_challenge.Repositories
                                     select new
                                     {
                                         userFollowing=following.UserFollowing,
+                                        creation_date=following.CreationDate
                                     }).ToListAsync();
             var result = followings.Select(x => new FollowingDto
             {
-                UserFollowing=x.userFollowing
+                UserFollowing=x.userFollowing,
+                CreationDate=x.creation_date
             }).ToList();
             return result;
         }

@@ -37,7 +37,8 @@ namespace back_end_challenge.Controllers
             var result = followingList.Select(x => new FollowingDto
             {
                UserFollowing=x.UserFollowing,
-               UserMaster=x.UserMaster
+               UserMaster=x.UserMaster,
+               CreationDate=x.CreationDate
             });
             return Ok(result);
         }

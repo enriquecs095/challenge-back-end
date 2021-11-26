@@ -14,6 +14,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.EntityFrameworkCore;
 using back_end_challenge.Repositories;
+using back_end_challenge.Repositories.UserRepository;
 
 namespace back_end_challenge
 {
@@ -40,6 +41,7 @@ namespace back_end_challenge
             services.AddScoped<ITimelineRepository, TimelineRepository>();
             services.AddScoped<IFollowingRepository, FollowingRepository>();
             services.AddScoped<IFollowerRepository, FollowerRepository>();
+            services.AddScoped<IUserRepository, UserRepository>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

@@ -22,7 +22,8 @@ namespace back_end_challenge.Repositories
         {
             var result = await db.Followers.AddAsync(new Follower { 
             UserFollower=follower.UserFollower,
-            UserMaster=follower.UserMaster
+            UserMaster=follower.UserMaster,
+            CreationDate=follower.CreationDate
             });
             await db.SaveChangesAsync();
             return (result != null) ? true : false;
@@ -35,11 +36,13 @@ namespace back_end_challenge.Repositories
                                     where users.IdUser == user
                                     select new
                                     {
-                                        userFollower= followers.UserFollower
+                                        userFollower= followers.UserFollower,
+                                        creation_date=followers.CreationDate
                                     }).ToListAsync();
             var result = followings.Select(x => new FollowerDto
             {
-               UserFollower=x.userFollower
+               UserFollower=x.userFollower,
+               CreationDate=x.creation_date
             }).ToList();
             return result;
         }
