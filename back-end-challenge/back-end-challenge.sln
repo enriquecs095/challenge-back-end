@@ -3,7 +3,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.31205.134
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "back-end-challenge", "back-end-challenge\back-end-challenge.csproj", "{9358766B-1889-41A0-83AC-EC9291C442F9}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "back-end-challenge.API", "back-end-challenge\back-end-challenge.API.csproj", "{9358766B-1889-41A0-83AC-EC9291C442F9}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
