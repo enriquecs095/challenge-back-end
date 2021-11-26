@@ -8,7 +8,7 @@ namespace back_end_challenge.Repositories
 {
     public interface IFollowingRepository
     {
-        Task<bool> AddFollowing(FollowingDto following);
-        Task<IReadOnlyList<FollowingDto>> GetFollowings(string user);
+        Task<bool> AddFollowingAsync(FollowingDto following);
+        Task<IReadOnlyList<FollowingDto>> GetFollowingListAsync(string user);
     }
 }

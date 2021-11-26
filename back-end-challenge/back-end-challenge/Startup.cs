@@ -38,6 +38,7 @@ namespace back_end_challenge
             services.AddDbContext<postgresContext>((s, o) => o.UseNpgsql(Configuration.GetSection("ConnectionDBPostgreServer").Get<string>()));
             services.AddScoped<ILoginRepository,LoginRepository>();
             services.AddScoped<ITimelineRepository, TimelineRepository>();
+            services.AddScoped<IFollowingRepository, FollowingRepository>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
