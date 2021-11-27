@@ -29,23 +29,17 @@ namespace back_end_challenge.Repositories
 
         public async Task<IReadOnlyList<TimelineDto>> GetTimeLineAsync(string user)
         {
-            var timeline = await (from users in db.Users
-                                join followings in db.Followings on users.IdUser equals followings.UserMaster
-                                join timelines in db.Timelines on users.IdUser equals timelines.User
-                                where timelines.User == user && timelines.User==followings.UserFollowing
-                                select new
-                                {
-                                    id=timelines.IdTimeline,
-                                    comments=timelines.Comment,
-                                    creation=timelines.CreationDate,
-                                    user=timelines.User
-                                }).ToListAsync();
+            var timeline = await (from timelines in db.Timelines
+                                    where timelines.User == user
+                                    select new
+                                    {
+                                        Comment= timelines.Comment,
+                                        CreationDate=timelines.CreationDate
+                                    }).ToListAsync();
             var result = timeline.Select(x => new TimelineDto
             {
-                IdTimeline=x.id,
-                Comment=x.comments,
-                User=x.user,
-                CreationDate=x.creation
+                Comment= x.Comment,
+                CreationDate=x.CreationDate
             }).ToList();
             return result;
         }

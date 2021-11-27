@@ -1,0 +1,413 @@
+{
+  "swagger": "2.0",
+  "info": {
+    "title": "back_end_challenge",
+    "version": "v1"
+  },
+  "paths": {
+    "/Follower/AddFollower": {
+      "post": {
+        "tags": [
+          "Follower"
+        ],
+        "consumes": [
+          "application/json",
+          "text/json",
+          "application/*+json"
+        ],
+        "produces": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "parameters": [
+          {
+            "in": "body",
+            "name": "body",
+            "schema": {
+              "$ref": "#/definitions/FollowerDto"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "schema": {
+              "type": "boolean"
+            }
+          }
+        }
+      }
+    },
+    "/Follower/GetFollowersList": {
+      "get": {
+        "tags": [
+          "Follower"
+        ],
+        "produces": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "parameters": [
+          {
+            "in": "query",
+            "name": "user",
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "schema": {
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/FollowerDto"
+              }
+            }
+          }
+        }
+      }
+    },
+    "/Following/AddFollowing": {
+      "post": {
+        "tags": [
+          "Following"
+        ],
+        "consumes": [
+          "application/json",
+          "text/json",
+          "application/*+json"
+        ],
+        "produces": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "parameters": [
+          {
+            "in": "body",
+            "name": "body",
+            "schema": {
+              "$ref": "#/definitions/FollowingDto"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "schema": {
+              "type": "boolean"
+            }
+          }
+        }
+      }
+    },
+    "/Following/GetFollowingList": {
+      "get": {
+        "tags": [
+          "Following"
+        ],
+        "produces": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "parameters": [
+          {
+            "in": "query",
+            "name": "user",
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "schema": {
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/FollowingDto"
+              }
+            }
+          }
+        }
+      }
+    },
+    "/Login/CreateUser": {
+      "post": {
+        "tags": [
+          "Login"
+        ],
+        "consumes": [
+          "application/json",
+          "text/json",
+          "application/*+json"
+        ],
+        "produces": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "parameters": [
+          {
+            "in": "body",
+            "name": "body",
+            "schema": {
+              "$ref": "#/definitions/UserDto"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "schema": {
+              "type": "boolean"
+            }
+          }
+        }
+      }
+    },
+    "/Login/Login": {
+      "post": {
+        "tags": [
+          "Login"
+        ],
+        "consumes": [
+          "application/json",
+          "text/json",
+          "application/*+json"
+        ],
+        "produces": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "parameters": [
+          {
+            "in": "body",
+            "name": "body",
+            "schema": {
+              "$ref": "#/definitions/UserDto"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "schema": {
+              "$ref": "#/definitions/UserDto"
+            }
+          }
+        }
+      }
+    },
+    "/Timeline/AddComment": {
+      "post": {
+        "tags": [
+          "Timeline"
+        ],
+        "consumes": [
+          "application/json",
+          "text/json",
+          "application/*+json"
+        ],
+        "produces": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "parameters": [
+          {
+            "in": "body",
+            "name": "body",
+            "schema": {
+              "$ref": "#/definitions/TimelineDto"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "schema": {
+              "type": "boolean"
+            }
+          }
+        }
+      }
+    },
+    "/Timeline/GetTimeline": {
+      "get": {
+        "tags": [
+          "Timeline"
+        ],
+        "produces": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "parameters": [
+          {
+            "in": "query",
+            "name": "user",
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "schema": {
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/TimelineDto"
+              }
+            }
+          }
+        }
+      }
+    },
+    "/User/GetUserByUsername": {
+      "get": {
+        "tags": [
+          "User"
+        ],
+        "produces": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "parameters": [
+          {
+            "in": "query",
+            "name": "user",
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "schema": {
+              "$ref": "#/definitions/UserDto"
+            }
+          }
+        }
+      }
+    }
+  },
+  "definitions": {
+    "FollowingDto": {
+      "type": "object",
+      "properties": {
+        "idFollowing": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "userMaster": {
+          "type": "string"
+        },
+        "userFollowing": {
+          "type": "string"
+        },
+        "creationDate": {
+          "format": "date-time",
+          "type": "string"
+        },
+        "userMasterNavigation": {
+          "$ref": "#/definitions/UserDto"
+        }
+      }
+    },
+    "TimelineDto": {
+      "type": "object",
+      "properties": {
+        "idTimeline": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "creationDate": {
+          "format": "date-time",
+          "type": "string"
+        },
+        "comment": {
+          "type": "string"
+        },
+        "user": {
+          "type": "string"
+        },
+        "userNavigation": {
+          "$ref": "#/definitions/UserDto"
+        }
+      }
+    },
+    "UserDto": {
+      "type": "object",
+      "properties": {
+        "idUser": {
+          "type": "string"
+        },
+        "email": {
+          "type": "string"
+        },
+        "creationDate": {
+          "format": "date-time",
+          "type": "string"
+        },
+        "firstName": {
+          "type": "string"
+        },
+        "lastName": {
+          "type": "string"
+        },
+        "activate": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "thought": {
+          "type": "string"
+        },
+        "password": {
+          "type": "string"
+        },
+        "followers": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/FollowerDto"
+          }
+        },
+        "followings": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/FollowingDto"
+          }
+        },
+        "timelines": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/TimelineDto"
+          }
+        }
+      }
+    },
+    "FollowerDto": {
+      "type": "object",
+      "properties": {
+        "idFollower": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "userMaster": {
+          "type": "string"
+        },
+        "userFollower": {
+          "type": "string"
+        },
+        "creationDate": {
+          "format": "date-time",
+          "type": "string"
+        },
+        "userMasterNavigation": {
+          "$ref": "#/definitions/UserDto"
+        }
+      }
+    }
+  }
+}

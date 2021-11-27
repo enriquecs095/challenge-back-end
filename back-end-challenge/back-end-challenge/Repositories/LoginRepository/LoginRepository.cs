@@ -28,7 +28,7 @@ namespace back_end_challenge.Repositories
                 LastName=userDto.LastName,
                 Password=userDto.Password,
                 CreationDate=DateTime.Now,
-                Thought=userDto.Thought,
+                Thought=" ",
                 Activate=0,
             });
             await db.SaveChangesAsync();

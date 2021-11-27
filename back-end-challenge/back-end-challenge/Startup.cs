@@ -24,12 +24,24 @@ namespace back_end_challenge
         {
             Configuration = configuration;
         }
+      
 
         public IConfiguration Configuration { get; }
 
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+
+            services.AddCors(options =>
+            {
+                options.AddDefaultPolicy(builder =>
+                {
+                    builder
+                           .WithOrigins(Configuration.GetSection("Frontend-Server").Get<String>())
+                           .WithHeaders(Configuration.GetSection("Access-Control-Allow-Headers").Get<String[]>())
+                           .WithMethods(Configuration.GetSection("Access-Control-Allow-Methods").Get<String[]>());
+                });
+            });
 
             services.AddControllers();
             services.AddSwaggerGen(c =>
@@ -58,6 +70,8 @@ namespace back_end_challenge
 
             app.UseRouting();
 
+            app.UseCors();
+    
             app.UseAuthorization();
 
             app.UseEndpoints(endpoints =>
